@@ -23,6 +23,13 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(self.cell.next_state, 'dead')
 
+    def test_overpopulation(self):
+        self.cell.state = 'alive'
+        self.cell.live_neighbours = 4
+        self.cell = self.game.overpopulation(self.cell)
+
+        self.assertEqual(self.cell.next_state, 'dead')
+
 if __name__ == '__main__':
     unittest.main()
 
