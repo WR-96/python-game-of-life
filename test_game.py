@@ -42,6 +42,12 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(self.cell.next_state, 'alive')
 
+    def test_become_alive(self):
+        self.cell.state = 'dead'
+        self.cell.live_neighbours = 3
+        self.cell = self.game.become_alive(self.cell)
+
+        self.assertEqual(self.cell.next_state, 'alive')
 
 if __name__ == '__main__':
     unittest.main()

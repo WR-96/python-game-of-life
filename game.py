@@ -24,6 +24,12 @@ class Game:
                 cell.next_state = 'alive'
         return cell
 
+    def become_alive(sefl, cell):
+        if cell.state == 'dead':
+            if cell.live_neighbours == 3:
+                cell.next_state = 'alive'
+        return cell
+
     def print_board(self):
         for row in self.board:
             for cell in row:
