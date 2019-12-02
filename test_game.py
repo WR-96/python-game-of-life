@@ -14,38 +14,38 @@ class TestGame(unittest.TestCase):
     def test_underpopulation(self):
         self.cell.state = 'alive'
         self.cell.live_neighbours = 1
-        self.cell = self.game.underpopulation(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'dead')
 
         self.cell.live_neighbours = 0
-        self.cell = self.game.underpopulation(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'dead')
 
     def test_overpopulation(self):
         self.cell.state = 'alive'
         self.cell.live_neighbours = 4
-        self.cell = self.game.overpopulation(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'dead')
 
     def test_survive(self):
         self.cell.state = 'alive'
         self.cell.live_neighbours = 2
-        self.cell = self.game.survive(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'alive')
 
         self.cell.live_neighbours = 3
-        self.cell = self.game.survive(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'alive')
 
     def test_become_alive(self):
         self.cell.state = 'dead'
         self.cell.live_neighbours = 3
-        self.cell = self.game.become_alive(self.cell)
+        self.cell = self.game.check_rules(self.cell)
 
         self.assertEqual(self.cell.next_state, 'alive')
 
