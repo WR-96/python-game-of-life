@@ -11,6 +11,23 @@ class TestGame(unittest.TestCase):
         self.cell = Cell()
         self.game = Game()
 
+    def test_next_step(self):
+        c1 = Cell(state = 'alive', live_neighbours = 1)
+
+        c2 = Cell(state = 'alive', live_neighbours = 2)
+
+        c3 = Cell(live_neighbours = 3)
+
+        c4 = Cell(state = 'alive', live_neighbours = 4)
+
+        self.game.board = [[c1,c2], [c3, c4]]
+        board = self.game.next_step()
+
+        self.assertEqual(board[0][0].state, 'dead')
+        self.assertEqual(board[0][1].state, 'alive')
+        self.assertEqual(board[1][0].state, 'alive')
+        self.assertEqual(board[1][1].state, 'dead')
+
     def test_underpopulation(self):
         self.cell.state = 'alive'
         self.cell.live_neighbours = 1
