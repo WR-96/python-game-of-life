@@ -9,10 +9,13 @@ class Game:
     def next_step(self):
         for row in self.board:
             row = list(map(self.check_rules, row))
+
+        for row in self.board:
             for cell in row:
                 cell.state = cell.next_state
 
         return self.board
+
 
     def check_rules(self, cell):
         if cell.state == 'alive':
@@ -25,8 +28,10 @@ class Game:
 
         return cell
 
+
     def print_board(self):
         for row in self.board:
             for cell in row:
                 cell.draw()
             print('')
+
