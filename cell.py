@@ -3,7 +3,7 @@
 
 class Cell:
 
-    def __init__(self,state = 'dead', neighbours = [], live_neighbours = 0, next_state = ''):
+    def __init__(self,state = 'dead', neighbours = [], live_neighbours = 0, next_state = 'dead'):
         self.state = state
         self.next_state = next_state
         self.neighbours = neighbours
