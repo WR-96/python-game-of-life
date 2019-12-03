@@ -19,5 +19,10 @@ def set_board(board, size):
     return board;
 
 
+def delimit_number(number, limit):
+    if number < 0: return 0;
+    if number > limit: return limit;
+    return number
+
 if __name__ == '__main__':
     main()
