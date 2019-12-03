@@ -28,6 +28,11 @@ class TestMain(unittest.TestCase):
             self.assertEqual(self.list_elements_instance_of(row, Cell), True)
 
 
+    def test_board_sets_neighbours(self):
+        cell = self.board[5][5]
+        self.assertEqual(len(cell.neighbours), 8)
+
+
     def test_neighbour_change_state(self):
         self.board[0][1].state = 'alive'
         self.assertEqual(self.board[0][0].live_neighbours, 1)

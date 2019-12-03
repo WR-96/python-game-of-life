@@ -16,6 +16,11 @@ def set_board(board, size):
         for j in range(size):
             board[i].append(Cell())
 
+    for i in range(size):
+        for j in range(size):
+            cell = set_neighbours(board, [i,j])
+            board[i][j] = cell
+
     return board;
 
 def set_neighbours(board, position):
